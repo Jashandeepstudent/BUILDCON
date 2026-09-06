@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-archivo), "Archivo", ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand palette — drawn from the client's actual logo + plant photo,
+     not the generic construction-orange-on-cream default. */
+  --color-navy: #0f1b33;      /* logo dark, primary base */
+  --color-navy-deep: #0a1224; /* darkest, footer/overlays */
+  --color-orange: #f97316;    /* logo accent, single CTA color */
+  --color-orange-dark: #c2540a;
+  --color-concrete: #edebe6;  /* warm gray, section breaks */
+  --color-offwhite: #fbfaf8;  /* main background */
+  --color-steel: #4b5563;     /* secondary text on light */
+  --color-steel-light: #9aa3b2; /* secondary text on dark */
+  --color-silo-blue: #1c6ea4; /* from the plant photo silos/fence */
+  --color-silo-blue-light: #2f8fd1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-offwhite);
+  color: var(--color-navy);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Batch-line motif: repeating tick marks, literal to a batching plant's
+   drum rotation rather than a decorative divider. Used sparingly, once
+   per major transition. */
+.batch-line {
+  height: 6px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-orange) 0px,
+    var(--color-orange) 28px,
+    transparent 28px,
+    transparent 40px
+  );
+}
+
+.batch-line-navy {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-navy) 0px,
+    var(--color-navy) 28px,
+    transparent 28px,
+    transparent 40px
+  );
+}
+
+/* Focus visibility kept intentional, not suppressed */
+:focus-visible {
+  outline: 3px solid var(--color-orange);
+  outline-offset: 2px;
+}
